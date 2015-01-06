@@ -20,6 +20,8 @@
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
+		<link rel="stylesheet" href="index.css">
+
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
 			if( window.location.search.match( /print-pdf/gi ) ) {
@@ -34,19 +36,6 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
-		<style>
-		  .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
-		    line-height: 1em; 
-        letter-spacing: 0;
-        font-family: Helvetica,Arial,sans-serif;
-        text-rendering: optimizeLegibility;
-		  }
-		  .video-compare {
-		    display: flex;
-		    justify-content: center;
-		    height:640px;
-		  }
-		</style>
 	</head>
 
 	<body>
@@ -71,6 +60,50 @@
             </div>
           </div>
         </section>
+
+				<section>
+					<table style="margin: 0 auto;">
+						<tr>
+							<td>
+								<div class="demo-label">
+									<code>translate3d</code>
+								</div>
+
+							</td>
+							<td>
+								<div class="demo translate3d-demo">
+									<div class="ball"></div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="demo-label">
+									<code>scale3d</code>
+								</div>
+
+							</td>
+							<td>
+								<div class="demo scale3d-demo">
+									<div class="ball"></div>
+								</div>
+							</td>
+						</tr>
+						</tr>
+						<tr>
+							<td>
+								<div class="demo-label">
+									<code>opacity</code>
+								</div>
+							</td>
+							<td>
+								<div class="demo opacity-demo">
+									<div class="ball"></div>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</section>
         
 
 

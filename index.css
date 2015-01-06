@@ -1,0 +1,156 @@
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    line-height: 1em;
+    letter-spacing: 0;
+    font-family: Helvetica,Arial,sans-serif;
+    text-rendering: optimizeLegibility;
+}
+.video-compare {
+    display: flex;
+    justify-content: center;
+    height:640px;
+}
+
+.demo-label {
+    height: 150px;
+    width: 200px;
+    position: relative;
+}
+
+.demo-label code {
+    position: absolute;
+    left: 0;
+    top: 50px;
+}
+
+.demo {
+    border: 2px solid #999 !important;
+    width: 300px;
+    height: 150px;
+    position: relative;
+    display: inline-block;
+    margin-left: 50px !important;
+}
+
+.ball {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    border-radius: 100%;
+}
+
+.translate3d-demo .ball {
+    left: 0;
+    top: 0;
+    animation:         translate3d-demo-anim 3s infinite ease-in-out;
+    -webkit-animation: translate3d-demo-anim 3s infinite ease-in-out;
+}
+
+.scale3d-demo .ball {
+    left: 125px;
+    top: 50px;
+    animation:         scale3d-demo-anim 3s alternate infinite ease-in-out;
+    -webkit-animation: scale3d-demo-anim 3s alternate infinite ease-in-out;
+}
+
+.opacity-demo .ball {
+    left: 125px;
+    top: 50px;
+    animation:         opacity-demo-anim 2s alternate infinite ease-in-out;
+    -webkit-animation: opacity-demo-anim 2s alternate infinite ease-in-out;
+}
+
+@keyframes translate3d-demo-anim {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    25% {
+        transform: translate3d(250px, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(250px, 100px, 0);
+    }
+
+    75% {
+        transform: translate3d(0, 100px, 0);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes scale3d-demo-anim {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        transform: scale3d(2, 2, 1);
+    }
+
+    100% {
+        transform: scale3d(0.75, 0.75, 1);
+    }
+}
+
+@keyframes opacity-demo-anim {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* I dislike repeating myself for -webkit, but this is the
+   world we live in */
+
+@-webkit-keyframes translate3d-demo-anim {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    25% {
+        transform: translate3d(250px, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(250px, 100px, 0);
+    }
+
+    75% {
+        transform: translate3d(0, 100px, 0);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@-webkit-keyframes scale3d-demo-anim {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        transform: scale3d(2, 2, 1);
+    }
+
+    100% {
+        transform: scale3d(0.75, 0.75, 1);
+    }
+}
+
+@-webkit-keyframes opacity-demo-anim {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
