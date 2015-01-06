@@ -10,6 +10,19 @@
     height:640px;
 }
 
+.sources li {
+  font-size: 0.7em !important;
+}
+
+.reveal img.inline-img {
+  display: inline-block;
+  border: 0;
+  background: none;
+  margin: 0;
+  box-shadow: none;
+  transform: translate(0, 20px);
+}
+
 .demo-label {
     height: 150px;
     width: 200px;
