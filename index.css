@@ -9,6 +9,33 @@
     justify-content: center;
     height:640px;
 }
+.flex {
+  display: flex;
+}
+.horizontal-flex {
+  display: flex;
+  flex-direction: column;
+}
+.center-flex {
+  display: flex;
+  align-items: center;
+}
+.center-flex .no-emphasis {
+    flex-grow: 0;
+}
+.center-flex .emphasis {
+    flex-grow: 1;
+}
+
+
+.reveal .footer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 0.5em;
+  transform: translate(0, -50px);
+  width: 100%;
+}
 
 .sources li {
   font-size: 0.7em !important;
