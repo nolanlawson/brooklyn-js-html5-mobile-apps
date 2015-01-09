@@ -47,20 +47,37 @@
 				<section>
 					<h2>Mobile HTM5 apps that can compete with native</h2>
 					<h4>Nolan Lawson</h4>
+          <aside class="notes">
+            Hi, I'm Nolan Lawson. I work for Squarespace doing
+            Android and mobile web, and in my spare time I
+            help maintain PouchDB, a JavaScript database.
+          </aside>
 				</section>
 
         <section>
           <h4>HTC Magic, 2009</h4>
           <img src="img/htc_magic.jpg" height=600 alt="htc magic"/>
+          <aside class="notes">
+            I've been doing Android development for awhile.
+            This was my first smartphone, and I thought it was pretty
+            awesome back then.
+          </aside>
         </section>
         
         <section>
           <img src="img/android_apps.png" height=640 alt="my android apps"/>
+          <aside class="notes">
+            I've written a lot of Android apps. But the problem with
+            all these apps is that they're written in Java, so they only
+            run on Android. Java used to hold the promise of being the
+            "write once, run everywhere" platform, but nowadays that
+            mantle has mostly passed to JavaScript.
+          </aside>
         </section>
 
         <section>
-          <div class="center-flex">
-            <div class="emphasis">
+          <div class="center-flex fancy-fragments">
+            <div  class="emphasis">
               <img src="img/web_tech.svg" width=100 alt="html, css, and js"/>
             </div>
             <div class="no-emphasis">
@@ -68,16 +85,16 @@
             </div>
             <div class="emphasis">
               <div class="horizontal-flex">
-                <div>
+                <div class="fragment" data-fragment-index="1" fade-out>
                   <img src="img/cordova.png" height=50 alt="cordova">
                 </div>
-                <div>
+                <div class="fragment" data-fragment-index="1" current-visible>
                   <img src="img/phonegap.png" height=50 alt="phonegap">
                 </div>
-                <div>
+                <div  class="fragment" data-fragment-index="2">
                   <img src="img/node-webkit.png" height=50 alt="node-webkit">
                 </div>
-                <div>
+                <div  class="fragment" data-fragment-index="2">
                   <img src="img/atomshell.png" height=50 alt="atom shell">
                 </div>
               </div>
@@ -99,10 +116,48 @@
               </ul>
             </div>
           </div>
+          <aside class="notes">
+            So nowadays, this dream I've been tinkering with for awhile
+            is that I could write an app once, using HTML, CSS, and JavaScript,
+            and then deploy it to a variety of mobile and even desktop platforms.
+            Today this is 100% possible with tools like Cordova née PhoneGap,
+            Node-Webkit, and Atom Shell.
+          </aside>
         </section>
 
         <section>
-          <h2>But, performance</h2>
+          <img src="img/zuck.png" alt="mark zuckerburg says the mobile web ain't ready"/>
+          <aside class="notes">
+            But the problem has always been performance. The conventional wisdom
+            nowadays is that you just can't get native-level performance from
+            web technologies. Facebook famously migrated their apps from HTML5
+            to native, Twitter followed suit, and many other apps became thick clients
+            or dropped the web altogether.
+          </aside>
+        </section>
+
+        <section>
+          <h4>Nexus 6, 2014</h4>
+          <img src="img/nexus6.jpg" height=600 alt="nexus 6"/>
+          <aside class="notes">
+            But you know, it's 2015, and phones have gotten a lot more
+            powerful since my HTC Magic's heydey. So I think we can revise
+            these assumptions, and give HTML5 a second chance. I think that in 2015
+            you can achieve native-level performance for most apps you want to write,
+            but you have to know the tricks in order to do it.
+          </aside>
+        </section>
+
+        <section>
+          <ul>
+            <li>Animations</li>
+            <li>Network</li>
+            <li>Android</li>
+            <li>Frameworks</li>
+          </ul>
+          <aside class="notes">
+            I'm going to talk about 4 main tricks.
+          </aside>
         </section>
 
         <section>
@@ -207,18 +262,6 @@
             <video data-autoplay src="vid/snakes.webm" loop></video>
           </div>
         </section>
-        
-        <section>
-          <div class="video-compare">
-            <div>
-              <video data-autoplay height=680 src="vid/slow-without-crosswalk.webm" loop></video>
-            </div>
-            <div>
-              <video data-autoplay height=680 src="vid/fast-with-crosswalk.webm" loop></video>
-            </div>
-          </div>
-          <div class="footer">Android 4.4.4 WebView (left, Chromium v33) vs. Chrosswalk (right, Chromium v38)</div>
-        </section>
 
         <section>
             <h2>Offline-first</h2>
@@ -253,7 +296,58 @@ function getImageSrc(src) {
 
         <section>
             <h2>Use Crosswalk on Android</h2>
-        </section>        
+        </section>
+
+        <section>
+          <img src="img/html5test.png" alt="html5 test logo"/>
+          <table class="nice-table">
+            <tr>
+              <th>Android</th>
+              <td>4.0</td>
+              <td>4.2</td>
+              <td>4.3</td>
+              <td>4.4</td>
+              <td>5.0</td>
+            </tr>
+
+            <tr>
+              <th>Score</th>
+              <td><strong>272</strong></td>
+              <td><strong>278</strong></td>
+              <td><strong>384</strong></td>
+              <td><strong>428</strong></td>
+              <td><strong>xxx</strong></td>
+            </tr>
+
+            <tr>
+              <th>Coverage</th>
+              <td>6.7%</td>
+              <td>39.5%</td>
+              <td>6.5%</td>
+              <td>39.1%</td>
+              <td><0.1%</td>
+            </tr>
+
+          </table>
+          <div>
+            <small class="text-muted">
+              Source: <a href="https://developer.android.com/about/dashboards/index.html">Android dashboards</a>,
+              fetched on 9 January 2015.
+            </small>
+          </div>
+        </section>
+
+        <section>
+          <div class="video-compare">
+            <div>
+              <video data-autoplay height=680 src="vid/slow-without-crosswalk.webm" loop></video>
+            </div>
+            <div>
+              <video data-autoplay height=680 src="vid/fast-with-crosswalk.webm" loop></video>
+            </div>
+          </div>
+          <div class="footer">Android 4.4.4 WebView (left, Chromium v33) vs. Chrosswalk (right, Chromium v38)</div>
+        </section>
 
         <section>
             <h2>Pick your frameworks carefully</h2>
@@ -351,6 +445,7 @@ function getImageSrc(src) {
 				progress: true,
 				history: true,
 				center: true,
+        fragments: true,
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
@@ -365,7 +460,15 @@ function getImageSrc(src) {
 				]
 			});
 
-		</script>
+      Reveal.addEventListener( 'slidechanged', function( event ) {
+        // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+        var notes = event.currentSlide.querySelector(".notes");
+        if(notes) {
+          console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
+        }
+      } );
+
+    </script>
 
 	</body>
 </html>

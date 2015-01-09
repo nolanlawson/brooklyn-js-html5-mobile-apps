@@ -27,6 +27,20 @@
     flex-grow: 1;
 }
 
+.reveal .nice-table td {
+    padding-right: 1.5em;
+    padding-bottom: 0.5em;
+}
+
+.reveal .nice-table th {
+    padding-right: 3em;
+    padding-bottom: 0.5em;
+}
+
+.text-muted {
+    opacity: 0.4;
+}
+
 
 .reveal .footer {
   position: fixed;
