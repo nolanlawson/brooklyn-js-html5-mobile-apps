@@ -27,6 +27,13 @@
     flex-grow: 1;
 }
 
+.android-chart {
+  min-width: 310px; 
+  height: 400px; 
+  max-width: 600px; 
+  margin: 0 auto;
+}
+
 .reveal .nice-table td {
     padding-right: 1.5em;
     padding-bottom: 0.5em;
@@ -41,8 +48,15 @@
     opacity: 0.4;
 }
 
-
 .reveal .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-size: 0.5em;
+  transform: translate(0, 50px);
+  width: 100%;
+}
+.reveal .header {
   position: fixed;
   top: 0;
   left: 0;

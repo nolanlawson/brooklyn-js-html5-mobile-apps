@@ -286,46 +286,57 @@ function getImageSrc(src) {
         </section>
 
         <section>
-            <h2>Use Crosswalk on Android</h2>
+            <h2>Android woes</h2>
         </section>
 
         <section>
-          <img src="img/html5test.png" alt="html5 test logo"/>
-          <table class="nice-table">
-            <tr>
-              <th>Android</th>
-              <td>4.0</td>
-              <td>4.2</td>
-              <td>4.3</td>
-              <td>4.4</td>
-              <td>5.0</td>
-            </tr>
-
-            <tr>
-              <th>Score</th>
-              <td><strong>272</strong></td>
-              <td><strong>278</strong></td>
-              <td><strong>384</strong></td>
-              <td><strong>428</strong></td>
-              <td><strong>xxx</strong></td>
-            </tr>
-
-            <tr>
-              <th>Coverage</th>
-              <td>6.7%</td>
-              <td>39.5%</td>
-              <td>6.5%</td>
-              <td>39.1%</td>
-              <td><0.1%</td>
-            </tr>
-
-          </table>
-          <div>
+          <h4>Android is the new IE</h4>
+          
+          <div id="android-chart"></div>
+          <div class="footer">
             <small class="text-muted">
               Source: <a href="https://developer.android.com/about/dashboards/index.html">Android dashboards</a>,
-              fetched on 9 January 2015.
+              fetched on 9 January 2015, and <a href="http://html5test.com">HTML5Test.com</a>.
             </small>
           </div>
+          <aside style="display:none;">
+            <p>The table is included here for accessibility.</p>
+            <table>
+              <tr>
+                <th>Android</th>
+                <td>2.2</td>
+                <td>2.3</td>
+                <td>4.0</td>
+                <td>4.2</td>
+                <td>4.3</td>
+                <td>4.4</td>
+                <td>5.0 (estimated)</td>
+              </tr>
+
+              <tr>
+                <th>Score</th>
+                <td><strong>187</strong></td>
+                <td><strong>187</strong></td>
+                <td><strong>272</strong></td>
+                <td><strong>278</strong></td>
+                <td><strong>384</strong></td>
+                <td><strong>428</strong></td>
+                <td><strong>497</strong></td>
+              </tr>
+
+              <tr>
+                <th>Coverage</th>
+                <td>0.035%</td>
+                <td>7.8%</td>
+                <td>6.7%</td>
+                <td>39.5%</td>
+                <td>6.5%</td>
+                <td>39.1%</td>
+                <td>0.05%</td>
+              </tr>
+
+            </table>
+          </aside>
         </section>
 
         <section>
@@ -337,7 +348,7 @@ function getImageSrc(src) {
               <video data-autoplay height=680 src="vid/fast-with-crosswalk.webm" loop></video>
             </div>
           </div>
-          <div class="footer">Android 4.4.4 WebView (left, Chromium v33) vs. Chrosswalk (right, Chromium v38)</div>
+          <div class="header">Android 4.4.4 WebView (left, Chromium v33) vs. Chrosswalk (right, Chromium v38)</div>
         </section>
 
         <section>
@@ -369,7 +380,7 @@ function getImageSrc(src) {
               <video data-autoplay src="vid/slow-ionic.webm" loop></video>
             </div>
           </div>
-          <div class="footer">
+          <div class="header">
             Ionic <code>collection-repeat</code> (left) vs. Angular <code>ng-repeat</code> (right)
           </div>
         </section>
@@ -426,6 +437,9 @@ function getImageSrc(src) {
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
+		<script src="js/jquery-1.9.1.js"></script>
+		<script src="js/highcharts.js"></script>
+		<script src="js/highcharts-exporting.js"></script>
 
 		<script>
 
@@ -459,6 +473,71 @@ function getImageSrc(src) {
         }
       } );
 
+    </script>
+    <script>
+    (function() {
+      
+      function showChart($chart) {
+        $chart.empty().highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: 1,//null,
+                plotShadow: false
+            },
+            title: {
+                text: '% users and HTML5 Test score by version'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}: <b>{point.html5Score}</b>',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Android versions',
+                data: [
+                    {name: '2.2', html5Score: 187, y: 0.35},
+                    {name: '2.3', html5Score: 187, y: 7.8},
+                    {name: '4.0', html5Score: 272, y: 6.7},
+                    {name: '4.2', html5Score: 278, y: 39.5},
+                    {name: '4.3', html5Score: 384, y: 6.5},
+                    {name: '4.4', html5Score: 428, y: 39.1},
+                    {
+                        name: '5.0 (estimated)',
+                        html5Score: 497,
+                        y: 0.05,
+                        sliced: true,
+                        selected: true
+                    },
+                ]
+            }]
+        });
+      }
+    
+      Reveal.addEventListener('slidechanged', function (e) {
+      
+        var chart = $(e.target).find('#android-chart')[0];
+        if (!chart) { // wrong slide
+          return;
+        }
+      
+        showChart($(chart));
+      });
+      
+      showChart($('#android-chart')); // on startup
+    
+    })();
     </script>
 
 	</body>
