@@ -259,3 +259,50 @@
         opacity: 0;
     }
 }
+
+.animated-spinner-holder {
+    position: relative;
+}
+.animated-spinner {
+    position: absolute;
+    left: calc(50% - 58px);
+    -webkit-animation: spinny 1s infinite linear;
+    animation: spinny 1s infinite linear;
+    width: 96px;
+    height: 96px;
+    background: transparent url("../img/spinner.png") 0 0 no-repeat;
+    display: block;
+}
+
+@-webkit-keyframes spinny {
+    0% {
+        -webkit-transform: rotate3d(0, 0, 1, 0deg);
+        -moz-transform: rotate3d(0, 0, 1, 0deg);
+        -ms-transform: rotate3d(0, 0, 1, 0deg);
+        -o-transform: rotate3d(0, 0, 1, 0deg);
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+    100% {
+        -webkit-transform: rotate3d(0, 0, 1, 360deg);
+        -moz-transform: rotate3d(0, 0, 1, 360deg);
+        -ms-transform: rotate3d(0, 0, 1, 360deg);
+        -o-transform: rotate3d(0, 0, 1, 360deg);
+        transform: rotate3d(0, 0, 1, 360deg);
+    }
+}
+@keyframes spinny {
+    0% {
+        -webkit-transform: rotate3d(0, 0, 1, 0deg);
+        -moz-transform: rotate3d(0, 0, 1, 0deg);
+        -ms-transform: rotate3d(0, 0, 1, 0deg);
+        -o-transform: rotate3d(0, 0, 1, 0deg);
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+    100% {
+        -webkit-transform: rotate3d(0, 0, 1, 360deg);
+        -moz-transform: rotate3d(0, 0, 1, 360deg);
+        -ms-transform: rotate3d(0, 0, 1, 360deg);
+        -o-transform: rotate3d(0, 0, 1, 360deg);
+        transform: rotate3d(0, 0, 1, 360deg);
+    }
+}
