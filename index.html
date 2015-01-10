@@ -317,29 +317,6 @@
         </section>
 
         <section>
-          <ul>
-            <li>Don't use <code>translateZ(0)</code></li>
-            <li>Use <code>-webkit</code> prefixes</li>
-            <li><code>will-change</code> will fix this someday</li>
-          </ul>
-          <aside class="notes">
-            Some more quick tips: don't use translateZ - this is an anti-pattern
-            that got bandied around after people figured out the 3D trick. Jake mentions
-            it in the video, but this is <em>still not as fast</em> as CSS
-            animations where you target only the four properties I showed you before.
-            You also don't want to throw this around everywhere, because that can overload
-            the GPU. You want your animations to be small, subtle, and targeted.
-
-            You have to use -webkit prefixes. I know, it's 2015, but we still have to put
-            up with this. Even Chrome 40 still requires it.
-
-            There's a CSS property called "will-change" that is designed to solve this
-            problem of having to use a crazy "3D" hack just to get hardware acceleration.
-            But browser support is not so good for now.
-          </aside>
-        </section>
-
-        <section>
             <h2>The Android problem</h2>
           <aside class="notes">
             Now, I'm going to move on to some Android-specific advice.
