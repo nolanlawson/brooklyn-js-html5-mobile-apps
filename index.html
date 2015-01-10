@@ -142,9 +142,9 @@
         <section>
           <ul>
             <li>Animations</li>
-            <li>Offline-first</li>
             <li>Android</li>
             <li>Frameworks</li>
+            <li>Offline-first</li>
           </ul>
           <aside class="notes">
             I'm going to talk about 4 main tricks.
@@ -205,6 +205,9 @@
             <div>
               <video height=680 src="vid/fast-non-javascript.webm" loop data-autoplay></video>
             </div>
+          </div>
+          <div class="header">
+            JavaScript animation (left) vs. hardware-accelerated CSS animation (right)
           </div>
           <aside class="notes">
             Look at this comparison of JavaScript animations (using Y.Anim) and
@@ -337,7 +340,180 @@
         </section>
 
         <section>
-            <h2>Offline-first</h2>
+            <h2>The Android problem</h2>
+          <aside class="notes">
+            Now, I'm going to move on to some Android-specific advice.
+          </aside>
+        </section>
+
+        <section>
+          <h4>Android is the new IE</h4>
+          
+          <div id="android-chart"></div>
+          <div class="footer">
+            <small class="text-muted">
+              Source: <a href="https://developer.android.com/about/dashboards/index.html">Android dashboards</a>,
+              fetched on 9 January 2015, and <a href="http://html5test.com">HTML5Test.com</a>.
+            </small>
+          </div>
+          <aside class="notes">
+            If you want to know what Android web development is like, imagine a parallel
+            universe where instead of IE being the non-evergreen browser everyone hated,
+            it was Chrome. And every user had a different version of Chrome, so you had
+            to worry about bugs in Chrome 37 that didn't appear in Chrome 36, or you had to
+            worry about bugs introduced by Samsung and HTC that only appeared on their phones.
+            That's Android.
+
+            These are the HTML5 test scores for the WebView in each of the recent
+            major Android version. If you test your desktop browser (Firefox or Chrome), it'll
+            score around 500. Only Android 5.0 Lollipop actually scores that well, because
+            it's actually, finally, an evergreen WebView. That's the one you want, and it's less
+            than 0.1% of all users.
+          </aside>
+          <aside style="display:none;">
+            <p>The table is included here for accessibility.</p>
+            <table>
+              <tr>
+                <th>Android</th>
+                <td>2.2</td>
+                <td>2.3</td>
+                <td>4.0</td>
+                <td>4.2</td>
+                <td>4.3</td>
+                <td>4.4</td>
+                <td>5.0 (estimated)</td>
+              </tr>
+
+              <tr>
+                <th>Score</th>
+                <td><strong>187</strong></td>
+                <td><strong>187</strong></td>
+                <td><strong>272</strong></td>
+                <td><strong>278</strong></td>
+                <td><strong>384</strong></td>
+                <td><strong>428</strong></td>
+                <td><strong>497</strong></td>
+              </tr>
+
+              <tr>
+                <th>Coverage</th>
+                <td>0.035%</td>
+                <td>7.8%</td>
+                <td>6.7%</td>
+                <td>39.5%</td>
+                <td>6.5%</td>
+                <td>39.1%</td>
+                <td>0.05%</td>
+              </tr>
+
+            </table>
+          </aside>
+        </section>
+
+        <section>
+          <img src="img/crosswalk.png" alt="crosswalk home page"/>
+          <aside class="notes">
+            Luckily, we finally have a solution to this problem. Intel has put out
+            a free, open-source library called Crosswalk that allows you to basically
+            bundle the latest version of Chromium with your app. Then you can use
+            that instead of the WebView. It gives you a consistent target to code to,
+            and it works back to Android 4.0.
+
+            Oh, and did I mention performance?
+          </aside>
+        </section>
+
+        <section>
+          <div class="video-compare">
+            <div>
+              <video data-autoplay height=680 src="vid/slow-without-crosswalk.webm" loop></video>
+            </div>
+            <div>
+              <video data-autoplay height=680 src="vid/fast-with-crosswalk.webm" loop></video>
+            </div>
+          </div>
+          <div class="header">Android 4.4.4 WebView (left, Chromium v33) vs. Chrosswalk (right, Chromium v38)</div>
+          <aside class="notes">
+            This is the same app running on Android 4.4.4 WebView vs the Crosswalk XWalkView.
+            It's not an old version of Android at all - it's the one right
+            before Lollipop - and yet the difference in performance is huge. I've seen old
+            4.0 phones that outperform 4.4 just because they're running Crosswalk.
+
+            Crosswalk adds about 20MB to the download size of your APK, because you're
+            basically giving your users Chrome, but for what you get,
+            it's definitely worth it. You basically get the Lollipop experience all the way
+            back to Android 4.0, which covers nearly all Android users.
+
+            This is probably the single best thing you can do to improve the performance of
+            your hybrid app. I can't recommend it enough.
+          </aside>
+        </section>
+
+        <section>
+          <h2>Pick your frameworks carefully</h2>
+          <aside class="notes">
+            This final point is about frameworks. Now I know we all love our MVC and
+            CSS frameworks...
+          </aside>
+        </section>
+        
+        <section>
+          <div>
+            <img src="img/framework_authors.png" alt="tweet, Looking fwd to js framework authors getting smartphones and trying their stuff out on em someday."/>
+          </div>
+          <aside class="notes">
+            But if you're doing mobile development, you can find the performance a little
+            underwhelming. This is not a jab at any framework in particular - we all care
+            about performance, but I'm just saying that mobile isn't necessarily their
+            number-1 concern, so we have to be cautious and try stuff out in advance.
+          </aside>
+        </section>
+
+        <section>
+          <h3>Mobile-optimized frameworks</h3>
+          <div class="flex">
+            <div><img src="img/framework_ionic.jpg" height=300 alt="ionic framework"/></div>
+            <div><img src="img/framework_famous.jpg" height=300 alt="famous framework"/></div>
+            <div><img src="img/framework_appgyver.jpg" height=300 alt="appgyver framework"/></div>
+          </div>
+          <aside class="notes">
+            And if you're really worried about performance, you can try one of the many
+            mobile-optimized frameworks. There are a bunch of these out there, and they all
+            have different tricks to get better performance on mobile.
+          </aside>
+        </section>
+
+
+        <section>
+          <div class="video-compare">
+            <div>
+              <video data-autoplay src="vid/fast-ionic.webm" loop></video>
+            </div>
+            <div>
+              <video data-autoplay src="vid/slow-ionic.webm" loop></video>
+            </div>
+          </div>
+          <div class="header">
+            Ionic <code>collection-repeat</code> (left) vs. Angular <code>ng-repeat</code> (right)
+          </div>
+          <aside class="notes">
+            For example, here's something Ionic has done. On the left, you have Ionic's custom
+            <code>collection-repeat</code> directive, which is a replacement for the standard
+            Angular <code>ng-repeat</code> directive, i.e. the thing that shows a list of items.
+            And you'll notice that the Ionic one is way faster than the Angular one, and
+            that I can actually flick through the list of items just as fast as I could on
+            a native list.
+
+            How they did this is actually really interesting. They just used the same trick
+            that the native UICollectionView (iOS) or ListView (Android) does, which is that
+            they only render those DOM elements that are currently visible. So now we finally
+            have smooth, fast-scrolling lists on the mobile web!
+          </aside>
+        </section>
+
+
+        <section>
+          <h2>Offline-first</h2>
           <aside class="notes">
             OK next, let's talk about a subject near and dear to me: offline-first.
 
@@ -416,7 +592,7 @@
             way to cache images offline.
           </aside>
         </section>
-        
+
         <section>
           <pre><code data-trim contenteditable>
 var db = new PouchDB('my-images');
@@ -469,115 +645,11 @@ function getImageSrc(src) {
             time around, when we load the images from PouchDB. Blink
             and you might miss it!
           </aside>
-        </section>
-
-        <section>
-            <h2>Coping with Android</h2>
-          <aside class="notes">
-            Now, I'm going to move on to some Android-specific advice.
-          </aside>
-        </section>
-
-        <section>
-          <h4>Android is the new IE</h4>
-          
-          <div id="android-chart"></div>
-          <div class="footer">
-            <small class="text-muted">
-              Source: <a href="https://developer.android.com/about/dashboards/index.html">Android dashboards</a>,
-              fetched on 9 January 2015, and <a href="http://html5test.com">HTML5Test.com</a>.
-            </small>
-          </div>
-          <aside style="display:none;">
-            <p>The table is included here for accessibility.</p>
-            <table>
-              <tr>
-                <th>Android</th>
-                <td>2.2</td>
-                <td>2.3</td>
-                <td>4.0</td>
-                <td>4.2</td>
-                <td>4.3</td>
-                <td>4.4</td>
-                <td>5.0 (estimated)</td>
-              </tr>
-
-              <tr>
-                <th>Score</th>
-                <td><strong>187</strong></td>
-                <td><strong>187</strong></td>
-                <td><strong>272</strong></td>
-                <td><strong>278</strong></td>
-                <td><strong>384</strong></td>
-                <td><strong>428</strong></td>
-                <td><strong>497</strong></td>
-              </tr>
-
-              <tr>
-                <th>Coverage</th>
-                <td>0.035%</td>
-                <td>7.8%</td>
-                <td>6.7%</td>
-                <td>39.5%</td>
-                <td>6.5%</td>
-                <td>39.1%</td>
-                <td>0.05%</td>
-              </tr>
-
-            </table>
-          </aside>
-        </section>
-
-        <section>
-          <img src="img/crosswalk.png" alt="crosswalk home page"/>
-        </section>
-
-        <section>
-          <div class="video-compare">
-            <div>
-              <video data-autoplay height=680 src="vid/slow-without-crosswalk.webm" loop></video>
-            </div>
-            <div>
-              <video data-autoplay height=680 src="vid/fast-with-crosswalk.webm" loop></video>
-            </div>
-          </div>
-          <div class="header">Android 4.4.4 WebView (left, Chromium v33) vs. Chrosswalk (right, Chromium v38)</div>
-        </section>
-
-        <section>
-            <h2>Pick your frameworks carefully</h2>
-        </section>
-        
-        <section>
-          <div>
-            <img src="img/framework_authors.png" alt="tweet, Looking fwd to js framework authors getting smartphones and trying their stuff out on em someday."/>
-          </div>
-        </section>
-
-        <section>
-          <h3>Mobile-optimized frameworks</h3>
-          <div class="flex">
-            <div><img src="img/framework_ionic.jpg" height=300 alt="ionic framework"/></div>
-            <div><img src="img/framework_famous.jpg" height=300 alt="famous framework"/></div>
-            <div><img src="img/framework_appgyver.jpg" height=300 alt="appgyver framework"/></div>
-          </div>
-        </section>
-
-
-        <section>
-          <div class="video-compare">
-            <div>
-              <video data-autoplay src="vid/fast-ionic.webm" loop></video>
-            </div>
-            <div>
-              <video data-autoplay src="vid/slow-ionic.webm" loop></video>
-            </div>
-          </div>
           <div class="header">
-            Ionic <code>collection-repeat</code> (left) vs. Angular <code>ng-repeat</code> (right)
+            Loading images on a slow connection (left) vs. Cached images in PouchDB (right)
           </div>
         </section>
-				
+
 				<section>
 				  <h2>Sources</h2>
 				  <ul class="sources">
@@ -713,7 +785,12 @@ function getImageSrc(src) {
                         sliced: true,
                         selected: true
                     },
-                ]
+                ],
+                dataLabels: {
+                  style: {
+                    fontSize: 20
+                  }
+                }
             }]
         });
       }

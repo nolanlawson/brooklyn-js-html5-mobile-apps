@@ -270,7 +270,7 @@
     animation: spinny 1s infinite linear;
     width: 96px;
     height: 96px;
-    background: transparent url("../img/spinner.png") 0 0 no-repeat;
+    background: transparent url("img/spinner.png") 0 0 no-repeat;
     display: block;
 }
 
