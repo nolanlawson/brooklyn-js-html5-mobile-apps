@@ -317,7 +317,7 @@
         </section>
 
         <section>
-            <h2>The Android problem</h2>
+            <h2>The Android issue</h2>
           <aside class="notes">
             Now, I'm going to move on to some Android-specific advice.
           </aside>
@@ -571,6 +571,27 @@
         </section>
 
         <section>
+          <div class="video-compare">
+            <div>
+              <video src="vid/offline-images-slow.webm" data-autoplay loop/>
+            </div>
+            <div>
+              <video src="vid/offline-images-fast.webm" data-autoplay loop/>
+            </div>
+          </div>
+          <aside class="notes">
+            And this is what it looks like. On the left, you have images
+            loading normally, using a throttled wifi endpoint we use
+            to simulate a slow 2G network, and on the right is the second
+            time around, when we load the images from PouchDB. Blink
+            and you might miss it!
+          </aside>
+          <div class="header">
+            Loading images on a slow connection (left) vs. Cached images in PouchDB (right)
+          </div>
+        </section>
+
+        <section>
           <pre><code data-trim contenteditable>
 var db = new PouchDB('my-images');
 db.initLru(5000000); // store 5 MB max
@@ -607,29 +628,30 @@ function getImageSrc(src) {
         </section>
 
         <section>
-          <div class="video-compare">
-            <div>
-              <video src="vid/offline-images-slow.webm" data-autoplay loop/>
-            </div>
-            <div>
-              <video src="vid/offline-images-fast.webm" data-autoplay loop/>
-            </div>
-          </div>
+          <ul>
+            <li>Animations</li>
+            <li>Android</li>
+            <li>Frameworks</li>
+            <li>Offline-first</li>
+          </ul>
           <aside class="notes">
-            And this is what it looks like. On the left, you have images
-            loading normally, using a throttled wifi endpoint we use
-            to simulate a slow 2G network, and on the right is the second
-            time around, when we load the images from PouchDB. Blink
-            and you might miss it!
+            Summary
           </aside>
-          <div class="header">
-            Loading images on a slow connection (left) vs. Cached images in PouchDB (right)
-          </div>
         </section>
 
 				<section>
 				  <h2>Sources</h2>
 				  <ul class="sources">
+            <li>
+              <a href="https://www.facebook.com/notes/facebook-engineering/under-the-hood-rebuilding-facebook-for-ios/10151036091753920">
+                Under the hood: Rebuilding Facebook for iOS
+              </a>
+            </li>
+            <li>
+              <a href="http://lists.w3.org/Archives/Public/public-coremob/2012Sep/0021.html">
+                What's slowing down Mobile Facebook
+              </a>
+            </li>
 				    <li>
 				      <a href="https://dev.opera.com/articles/css-will-change-property/">
 				        Everything You Need to Know About the CSS will-change Property

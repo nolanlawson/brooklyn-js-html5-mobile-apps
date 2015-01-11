@@ -205,47 +205,47 @@
 
 @-webkit-keyframes translate3d-demo-anim {
     0% {
-        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
     }
 
     25% {
-        transform: translate3d(250px, 0, 0);
+        -webkit-transform: translate3d(250px, 0, 0);
     }
 
     50% {
-        transform: translate3d(250px, 100px, 0);
+        -webkit-transform: translate3d(250px, 100px, 0);
     }
 
     75% {
-        transform: translate3d(0, 100px, 0);
+        -webkit-transform: translate3d(0, 100px, 0);
     }
 
     100% {
-        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
     }
 }
 
 @-webkit-keyframes scale3d-demo-anim {
     0% {
-        transform: scale3d(1, 1, 1);
+        -webkit-transform: scale3d(1, 1, 1);
     }
 
     50% {
-        transform: scale3d(2, 2, 1);
+        -webkit-transform: scale3d(2, 2, 1);
     }
 
     100% {
-        transform: scale3d(0.75, 0.75, 1);
+        -webkit-transform: scale3d(0.75, 0.75, 1);
     }
 }
 
 @-webkit-keyframes rotate3d-demo-anim {
     0% {
-        transform: rotate3d(0, 0, 1, 0deg);
+        -webkit-transform: rotate3d(0, 0, 1, 0deg);
     }
 
     100% {
-        transform: rotate3d(0, 0, 1, 90deg);
+        -webkit-transform: rotate3d(0, 0, 1, 90deg);
     }
 
 }
@@ -266,43 +266,39 @@
 .animated-spinner {
     position: absolute;
     left: calc(50% - 58px);
-    -webkit-animation: spinny 1s infinite linear;
     animation: spinny 1s infinite linear;
+    -webkit-animation: spinny 1s infinite linear;
     width: 96px;
     height: 96px;
     background: transparent url("img/spinner.png") 0 0 no-repeat;
     display: block;
 }
 
-@-webkit-keyframes spinny {
+@keyframes spinny {
     0% {
-        -webkit-transform: rotate3d(0, 0, 1, 0deg);
-        -moz-transform: rotate3d(0, 0, 1, 0deg);
-        -ms-transform: rotate3d(0, 0, 1, 0deg);
-        -o-transform: rotate3d(0, 0, 1, 0deg);
         transform: rotate3d(0, 0, 1, 0deg);
     }
     100% {
-        -webkit-transform: rotate3d(0, 0, 1, 360deg);
-        -moz-transform: rotate3d(0, 0, 1, 360deg);
-        -ms-transform: rotate3d(0, 0, 1, 360deg);
-        -o-transform: rotate3d(0, 0, 1, 360deg);
         transform: rotate3d(0, 0, 1, 360deg);
     }
 }
-@keyframes spinny {
+
+/* safari has a bug where you cannot rotate directly
+   from 0 to 360: http://stackoverflow.com/a/12313143/680742 */
+@-webkit-keyframes spinny {
     0% {
         -webkit-transform: rotate3d(0, 0, 1, 0deg);
-        -moz-transform: rotate3d(0, 0, 1, 0deg);
-        -ms-transform: rotate3d(0, 0, 1, 0deg);
-        -o-transform: rotate3d(0, 0, 1, 0deg);
-        transform: rotate3d(0, 0, 1, 0deg);
+    }
+    25% {
+        -webkit-transform: rotate3d(0, 0, 1, 90deg);
+    }
+    50% {
+        -webkit-transform: rotate3d(0, 0, 1, 180deg);
+    }
+    75% {
+        -webkit-transform: rotate3d(0, 0, 1, 270deg);
     }
     100% {
         -webkit-transform: rotate3d(0, 0, 1, 360deg);
-        -moz-transform: rotate3d(0, 0, 1, 360deg);
-        -ms-transform: rotate3d(0, 0, 1, 360deg);
-        -o-transform: rotate3d(0, 0, 1, 360deg);
-        transform: rotate3d(0, 0, 1, 360deg);
     }
 }
