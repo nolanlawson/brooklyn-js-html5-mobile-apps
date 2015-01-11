@@ -662,14 +662,14 @@ function getImageSrc(src) {
 				        Mobile Web Thursdays: Performance on Mobile (video)
 				      </a>
 				    </li>
+            <li>
+              <a href="http://ionicframework.com/blog/collection-repeat/">
+                Ionic: Collection Repeat
+              </a>
+            </li>
 				    <li>
 				      <a href="https://www.youtube.com/watch?v=Il4swGfTOSM">
 				        Breaking the 1000ms Time to Glass Mobile Barrier (video)
-				      </a>
-				    </li>
-				    <li>
-				      <a href="http://ionicframework.com/blog/collection-repeat/">
-				        Ionic: Collection Repeat
 				      </a>
 				    </li>
 				  </ul>
@@ -704,6 +704,7 @@ function getImageSrc(src) {
 		<script src="js/jquery-1.9.1.js"></script>
 		<script src="js/highcharts.js"></script>
 		<script src="js/highcharts-exporting.js"></script>
+    <script src="js/ua.js"></script>
 
 		<script>
 
@@ -807,6 +808,14 @@ function getImageSrc(src) {
       showChart($('#android-chart')); // on startup
     
     })();
+    </script>
+
+    <script>
+    if (!UA.isChrome() && !UA.isFirefox() && !UA.isAndroid() && !UA.isOpera()) {
+      window.alert(
+        'Heads up! This presentation works best in ' +
+        'Firefox/Chrome due to WEBM video. Sorry!');
+    }
     </script>
 
 	</body>

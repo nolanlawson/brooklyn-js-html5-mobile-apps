@@ -1,51 +1,62 @@
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
-    line-height: 1em;
-    letter-spacing: 0;
-    font-family: Helvetica,Arial,sans-serif;
-    text-rendering: optimizeLegibility;
+  line-height: 1em;
+  letter-spacing: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  text-rendering: optimizeLegibility;
 }
+
 .video-compare {
-    display: flex;
-    justify-content: center;
-    height:640px;
+  display: -webkit-box;
+  display: flex;
+  justify-content: center;
+  height: 640px;
 }
+
 .flex {
+  display: -webkit-box;
   display: flex;
 }
+
 .horizontal-flex {
+  display: -webkit-box;
   display: flex;
+  -webkit-box-orient: horizontal;
   flex-direction: column;
 }
+
 .center-flex {
+  display: -webkit-box;
   display: flex;
   align-items: center;
 }
+
 .center-flex .no-emphasis {
-    flex-grow: 0;
+  flex-grow: 0;
 }
+
 .center-flex .emphasis {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .android-chart {
-  min-width: 310px; 
-  height: 400px; 
-  max-width: 600px; 
+  min-width: 310px;
+  height: 400px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
 .reveal .nice-table td {
-    padding-right: 1.5em;
-    padding-bottom: 0.5em;
+  padding-right: 1.5em;
+  padding-bottom: 0.5em;
 }
 
 .reveal .nice-table th {
-    padding-right: 3em;
-    padding-bottom: 0.5em;
+  padding-right: 3em;
+  padding-bottom: 0.5em;
 }
 
 .text-muted {
-    opacity: 0.4;
+  opacity: 0.4;
 }
 
 .reveal .footer {
@@ -56,6 +67,7 @@
   transform: translate(0, 50px);
   width: 100%;
 }
+
 .reveal .header {
   position: fixed;
   top: 0;
@@ -79,226 +91,227 @@
 }
 
 .demo-label {
-    height: 150px;
-    width: 200px;
-    position: relative;
+  height: 150px;
+  width: 200px;
+  position: relative;
 }
 
 .demo-label code {
-    position: absolute;
-    left: 0;
-    top: 50px;
+  position: absolute;
+  left: 0;
+  top: 50px;
 }
 
 .demo {
-    border: 2px solid #999 !important;
-    width: 300px;
-    height: 150px;
-    position: relative;
-    display: inline-block;
-    margin-left: 50px !important;
+  border: 2px solid #999 !important;
+  width: 300px;
+  height: 150px;
+  position: relative;
+  display: inline-block;
+  margin-left: 50px !important;
 }
 
 .ball {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: #333;
-    border-radius: 100%;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #333;
+  border-radius: 100%;
 }
 
 .square {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: #333;
-    border-radius: 2%;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #333;
+  border-radius: 2%;
 }
 
 .translate3d-demo .ball {
-    left: 0;
-    top: 0;
-    animation:         translate3d-demo-anim 3s infinite ease-in-out;
-    -webkit-animation: translate3d-demo-anim 3s infinite ease-in-out;
+  left: 0;
+  top: 0;
+  animation: translate3d-demo-anim 3s infinite ease-in-out;
+  -webkit-animation: translate3d-demo-anim 3s infinite ease-in-out;
 }
 
 .scale3d-demo .ball {
-    left: 125px;
-    top: 50px;
-    animation:         scale3d-demo-anim 3s alternate infinite ease-in-out;
-    -webkit-animation: scale3d-demo-anim 3s alternate infinite ease-in-out;
+  left: 125px;
+  top: 50px;
+  animation: scale3d-demo-anim 3s alternate infinite ease-in-out;
+  -webkit-animation: scale3d-demo-anim 3s alternate infinite ease-in-out;
 }
 
 .rotate3d-demo .square {
-    left: 125px;
-    top: 50px;
-    animation:         rotate3d-demo-anim 2s infinite ease-in-out;
-    -webkit-animation: rotate3d-demo-anim 2s infinite ease-in-out;
+  left: 125px;
+  top: 50px;
+  animation: rotate3d-demo-anim 2s infinite ease-in-out;
+  -webkit-animation: rotate3d-demo-anim 2s infinite ease-in-out;
 }
 
 .opacity-demo .ball {
-    left: 125px;
-    top: 50px;
-    animation:         opacity-demo-anim 2s alternate infinite ease-in-out;
-    -webkit-animation: opacity-demo-anim 2s alternate infinite ease-in-out;
+  left: 125px;
+  top: 50px;
+  animation: opacity-demo-anim 2s alternate infinite ease-in-out;
+  -webkit-animation: opacity-demo-anim 2s alternate infinite ease-in-out;
 }
 
 @keyframes translate3d-demo-anim {
-    0% {
-        transform: translate3d(0, 0, 0);
-    }
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
 
-    25% {
-        transform: translate3d(250px, 0, 0);
-    }
+  25% {
+    transform: translate3d(250px, 0, 0);
+  }
 
-    50% {
-        transform: translate3d(250px, 100px, 0);
-    }
+  50% {
+    transform: translate3d(250px, 100px, 0);
+  }
 
-    75% {
-        transform: translate3d(0, 100px, 0);
-    }
+  75% {
+    transform: translate3d(0, 100px, 0);
+  }
 
-    100% {
-        transform: translate3d(0, 0, 0);
-    }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @keyframes scale3d-demo-anim {
-    0% {
-        transform: scale3d(1, 1, 1);
-    }
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
 
-    50% {
-        transform: scale3d(2, 2, 1);
-    }
+  50% {
+    transform: scale3d(2, 2, 1);
+  }
 
-    100% {
-        transform: scale3d(0.75, 0.75, 1);
-    }
+  100% {
+    transform: scale3d(0.75, 0.75, 1);
+  }
 }
 
 @keyframes rotate3d-demo-anim {
-    0% {
-        transform: rotate3d(0, 0, 1, 0deg);
-    }
+  0% {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
 
-    100% {
-        transform: rotate3d(0, 0, 1, 90deg);
-    }
+  100% {
+    transform: rotate3d(0, 0, 1, 90deg);
+  }
 
 }
 
 @keyframes opacity-demo-anim {
-    0% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
 
-    100% {
-        opacity: 0;
-    }
+  100% {
+    opacity: 0;
+  }
 }
 
 /* I dislike repeating myself for -webkit, but this is the
    world we live in */
 
 @-webkit-keyframes translate3d-demo-anim {
-    0% {
-        -webkit-transform: translate3d(0, 0, 0);
-    }
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
 
-    25% {
-        -webkit-transform: translate3d(250px, 0, 0);
-    }
+  25% {
+    -webkit-transform: translate3d(250px, 0, 0);
+  }
 
-    50% {
-        -webkit-transform: translate3d(250px, 100px, 0);
-    }
+  50% {
+    -webkit-transform: translate3d(250px, 100px, 0);
+  }
 
-    75% {
-        -webkit-transform: translate3d(0, 100px, 0);
-    }
+  75% {
+    -webkit-transform: translate3d(0, 100px, 0);
+  }
 
-    100% {
-        -webkit-transform: translate3d(0, 0, 0);
-    }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
 }
 
 @-webkit-keyframes scale3d-demo-anim {
-    0% {
-        -webkit-transform: scale3d(1, 1, 1);
-    }
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+  }
 
-    50% {
-        -webkit-transform: scale3d(2, 2, 1);
-    }
+  50% {
+    -webkit-transform: scale3d(2, 2, 1);
+  }
 
-    100% {
-        -webkit-transform: scale3d(0.75, 0.75, 1);
-    }
+  100% {
+    -webkit-transform: scale3d(0.75, 0.75, 1);
+  }
 }
 
 @-webkit-keyframes rotate3d-demo-anim {
-    0% {
-        -webkit-transform: rotate3d(0, 0, 1, 0deg);
-    }
+  0% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+  }
 
-    100% {
-        -webkit-transform: rotate3d(0, 0, 1, 90deg);
-    }
+  100% {
+    -webkit-transform: rotate3d(0, 0, 1, 90deg);
+  }
 
 }
 
 @-webkit-keyframes opacity-demo-anim {
-    0% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
 
-    100% {
-        opacity: 0;
-    }
+  100% {
+    opacity: 0;
+  }
 }
 
 .animated-spinner-holder {
-    position: relative;
+  position: relative;
 }
+
 .animated-spinner {
-    position: absolute;
-    left: calc(50% - 58px);
-    animation: spinny 1s infinite linear;
-    -webkit-animation: spinny 1s infinite linear;
-    width: 96px;
-    height: 96px;
-    background: transparent url("img/spinner.png") 0 0 no-repeat;
-    display: block;
+  position: absolute;
+  left: calc(50% - 58px);
+  animation: spinny 1s infinite linear;
+  -webkit-animation: spinny 1s infinite linear;
+  width: 96px;
+  height: 96px;
+  background: transparent url("img/spinner.png") 0 0 no-repeat;
+  display: block;
 }
 
 @keyframes spinny {
-    0% {
-        transform: rotate3d(0, 0, 1, 0deg);
-    }
-    100% {
-        transform: rotate3d(0, 0, 1, 360deg);
-    }
+  0% {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
 }
 
 /* safari has a bug where you cannot rotate directly
    from 0 to 360: http://stackoverflow.com/a/12313143/680742 */
 @-webkit-keyframes spinny {
-    0% {
-        -webkit-transform: rotate3d(0, 0, 1, 0deg);
-    }
-    25% {
-        -webkit-transform: rotate3d(0, 0, 1, 90deg);
-    }
-    50% {
-        -webkit-transform: rotate3d(0, 0, 1, 180deg);
-    }
-    75% {
-        -webkit-transform: rotate3d(0, 0, 1, 270deg);
-    }
-    100% {
-        -webkit-transform: rotate3d(0, 0, 1, 360deg);
-    }
+  0% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+  }
+  25% {
+    -webkit-transform: rotate3d(0, 0, 1, 90deg);
+  }
+  50% {
+    -webkit-transform: rotate3d(0, 0, 1, 180deg);
+  }
+  75% {
+    -webkit-transform: rotate3d(0, 0, 1, 270deg);
+  }
+  100% {
+    -webkit-transform: rotate3d(0, 0, 1, 360deg);
+  }
 }
