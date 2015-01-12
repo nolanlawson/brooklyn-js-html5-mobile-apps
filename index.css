@@ -38,6 +38,44 @@
   flex-grow: 1;
 }
 
+
+.reveal .slides .fancy-fragments {
+  height: 600px;
+}
+
+.reveal .slides .fancy-fragments .fragment {
+  transition: all 0.4s cubic-bezier(.17,.67,.58,1);
+  -webkit-transition: all 0.4s cubic-bezier(.17,.67,.58,1);
+
+  max-height: 95%;
+  opacity: 0;
+}
+
+.reveal .slides .fancy-fragments .fragment.visible {
+  max-height: 95%;
+  opacity: 1;
+}
+
+.reveal .slides .fancy-fragments .fragment.fancy-first:not(.visible) {
+  transform: translate3d(0, -999px, 0) scale3d(0.9, 0.9, 1);
+  -webkit-transform: translate3d(0, -999px, 0) scale3d(0.9, 0.9, 1);
+}
+
+.reveal .slides .fancy-fragments .fragment.fancy-second:not(.visible) {
+  transform: translate3d(0, 999px, 0) scale3d(0.9, 0.9, 1);
+  -webkit-transform: translate3d(0, 999px, 0) scale3d(0.9, 0.9, 1);
+}
+
+.reveal .slides .fancy-fragments .fragment.visible {
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}
+
+.reveal .slides .fancy-fragments .fragment img {
+  transition: none;
+  -webkit-transition: none;
+}
+
 .android-chart {
   min-width: 310px;
   height: 400px;
