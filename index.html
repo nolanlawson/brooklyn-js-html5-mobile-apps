@@ -533,17 +533,17 @@
         <section>
           <div class="video-compare">
             <div>
-              <video data-autoplay src="vid/fast-ionic.webm" loop></video>
+              <video data-autoplay src="vid/slow-ionic.webm" loop></video>
             </div>
             <div>
-              <video data-autoplay src="vid/slow-ionic.webm" loop></video>
+              <video data-autoplay src="vid/fast-ionic.webm" loop></video>
             </div>
           </div>
           <div class="header">
-            Ionic <code>collection-repeat</code> (left) vs. Angular <code>ng-repeat</code> (right)
+            Angular <code>ng-repeat</code> (left) vs. Ionic <code>collection-repeat</code> (right)
           </div>
           <aside class="notes">
-            For example, here's something Ionic has done. On the left, you have Ionic's custom
+            For example, here's something Ionic has done. On the right, you have Ionic's custom
             <code>collection-repeat</code> directive, which is a replacement for the standard
             Angular <code>ng-repeat</code> directive, i.e. the thing that shows a list of items.
             And you'll notice that the Ionic one is way faster than the Angular one, and
@@ -557,35 +557,31 @@
           </aside>
         </section>
 
-
         <section>
-          <h2>Offline-first</h2>
-          <aside class="notes">
-            OK next, let's talk about a subject near and dear to me: offline-first.
+            <div class="animated-spinner-holder">
+                <h2>Offline-first</h2>
+                <div class="animated-spinner"></div>
+            </div>
+            <aside class="notes">
+                Last but not least, I want to talk about offline-first.
 
-            The basic idea of offline-first is that you want to cache aggressively,
-            and prefer talking to the local data store rather than the network.
-            And the reason you want to do that...
-          </aside>
-        </section>
+                The basic idea of offline-first is that you want to cache aggressively,
+                and prefer talking to the local data store rather than the network.
+                And the reason you want to do that is that the network is
+                slow and unreliable. And every time your app
+                needs to make a network call before it can proceed, your users
+                have to stare at a spinner. This can slow down your app a ton, and furthermore
+                it means your app can stop working when your users go on the subway or
+                a far corner of the building with poor reception.
 
-        <section>
-          <div class="animated-spinner-holder">
-            <div class="animated-spinner"></div>
-          </div>
-          <aside class="notes">
-            Is that the network is slow and unreliable. And every time your app
-            needs to make a network call before it can proceed, your users
-            have to stare at a spinner. This can slow down your app a ton, and furthermore
-            it means your app can stop working when your users go on the subway or
-            a far corner of the building with poor reception.
+                You can make lovely spinners with CSS animations that give beautiful
+                animations, but people aren't using your app to look at a spinner. Everything
+                I said before about smooth animations and crisp UIs doesn't matter if
+                your users are staring at a spinner.
 
-            You can make lovely spinners with CSS animations that give beautiful
-            animations, but people aren't using your app to look at a spinner.
-
-            This technique is important for desktop, but it's especially important
-            for mobile, because of just how slow cell networks are.
-          </aside>
+                This technique is important for desktop, but it's especially important
+                for mobile, because of just how slow cell networks are.
+            </aside>
         </section>
 
         <section>
