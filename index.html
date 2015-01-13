@@ -311,7 +311,63 @@
             in the name. Go figure.
           </aside>
 				</section>
+				<section>
+					<table style="margin: 0 auto;">
+						<tr>
+							<td>
+								<div class="demo-label smaller">
+									<code>top / left</code>
+								</div>
 
+							</td>
+							<td>
+								<div class="demo top-left-demo">
+									<div class="ball"></div>
+								</div>
+							</td>
+						</tr>
+						</tr>
+            <tr>
+              <td>
+                <div class="demo-label smaller">
+                  <code>top / left /  translateZ(0)</code>
+                </div>
+              </td>
+              <td>
+                <div class="demo top-left-with-z-demo">
+                  <div class="ball"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+							<td>
+								<div class="demo-label smaller">
+									<code>translate3d</code>
+								</div>
+
+							</td>
+							<td>
+								<div class="demo translate3d-demo">
+									<div class="ball"></div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+						  <td colspan=2>
+						    <button class="btn" type=button onclick=runJsForOneSecond()>Run JS for 1 second</button>
+						  </td>
+						</tr>
+					</table>
+          <aside class="notes">
+            Now if you don't believe me, and you go running off
+            using CSS animations without using the "3D" variants,
+            you'll get something faster than JavaScript animations,
+            but still not as fast as hardware-accelerated animations.
+            And thus not as fast as native. Also, the non-GPU animations
+            are blocked by JavaScript and the DOM!
+          </aside>
+				</section>
+				
         <section>
           <div>
             <video data-autoplay src="vid/snakes.webm" loop></video>
@@ -320,11 +376,6 @@
             Jake Archibald and Paul Kinlan - Mobile Web Thursdays: Performance on Mobile
           </div>
           <aside class="notes">
-            Now if you don't believe me, and you go running off
-            using CSS animations without using the "3D" variants,
-            you'll get something faster than JavaScript animations,
-            but still not as fast as hardware-accelerated animations.
-            And thus not as fast as native.
             In the links at the end of these slides (which I'll send around),
             I have a Jake Archibald video where he goes over all these different
             techniques and shows exactly what the performance looks like on a Nexus 7.
@@ -836,6 +887,20 @@ function getImageSrc(src) {
         'Heads up! This presentation works best in ' +
         'Firefox/Chrome due to WEBM video. Sorry!');
     }
+    </script>
+    
+    <script>
+    function runJsForOneSecond() {
+      var start = Date.now();
+      var sum = 0;
+      while (true) {
+        sum += Date.now();
+        if (Date.now() > start + 1000) {
+          break;
+        }
+      }
+    }
+    
     </script>
 
 	</body>
