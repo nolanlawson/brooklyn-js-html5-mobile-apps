@@ -321,7 +321,7 @@
 
 							</td>
 							<td>
-								<div class="demo top-left-demo">
+								<div class="demo top-left-demo balls">
 									<div class="ball"></div>
 								</div>
 							</td>
@@ -334,8 +334,7 @@
                 </div>
               </td>
               <td>
-                <div class="demo top-left-with-z-demo">
-                  <div class="ball"></div>
+                <div class="demo top-left-with-z-demo balls">
                 </div>
               </td>
             </tr>
@@ -347,8 +346,7 @@
 
 							</td>
 							<td>
-								<div class="demo translate3d-demo">
-									<div class="ball"></div>
+								<div class="demo translate3d-demo balls">
 								</div>
 							</td>
 						</tr>
@@ -901,6 +899,26 @@ function getImageSrc(src) {
       }
     }
     
+    </script>
+    
+    <script>
+    // fill the "snake" demo with lots of "ball" divs
+    (function () {
+      var numBalls = 30;
+      var delay = 5;
+      
+      $('.balls').each(function (_, el) {
+        for (var i = 0; i < numBalls; i++) {
+          var ball = $('<div class="ball"></div>');
+          var delay = (i / 16) + 's';
+          ball.css({
+            '-webkit-animation-delay': delay,
+            'animation-delay': delay,
+          });
+          $(el).append(ball);
+        }
+      })
+    })();
     </script>
 
 	</body>
