@@ -1,285 +1,332 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>FPS demo</title>
-    <style>
+<!--
+Created using JS Bin
+http://jsbin.com
 
-      *:focus {
-        outline: 0;
-      }
+Copyright (c) 2015 by anonymous (http://jsbin.com/ibucuk/4/edit)
 
-      .demo {
-        border: 2px solid #999;
-        width: 300px;
-        height: 150px;
-        position: relative;
-        display: inline-block;
-      }
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<head>
+  <title>Snakes on a geo plane</title>
 
-      .ball {
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        background-color: #333;
-        border-radius: 100%;
-      }
+  <style id="jsbin-css">
 
-      .container {
-        margin: 0 auto;
-        padding: 10px;
-        text-align: center;
-      }
+    *:focus {
+      outline: 0;
+    }
 
-      .translate3d-demo .ball {
-        left: 0;
+    @-webkit-keyframes around {
+      0% {
         top: 0;
-        animation: translate3d-demo-anim 3s infinite ease-in-out;
-        -webkit-animation: translate3d-demo-anim 3s infinite ease-in-out;
-      }
-
-      .translate-demo .ball {
         left: 0;
+      }
+      25% {
         top: 0;
-        animation: translate-demo-anim 3s infinite ease-in-out;
-        -webkit-animation: translate-demo-anim 3s infinite ease-in-out;
+        left: 600px;
       }
-
-      .top-left-demo .ball {
-        animation: top-left-demo-anim 3s infinite ease-in-out;
-        -webkit-animation: top-left-demo-anim 3s infinite ease-in-out;
+      50% {
+        top: 400px;
+        left: 600px;
       }
-
-      .top-left-with-z-demo .ball {
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
-        animation: top-left-demo-anim 3s infinite ease-in-out;
-        -webkit-animation: top-left-demo-anim 3s infinite ease-in-out;
+      75% {
+        top: 400px;
+        left: 0;
       }
-
-      @keyframes translate-demo-anim {
-        0% {
-          transform: translate(0, 0);
-        }
-
-        25% {
-          transform: translate(250px, 0);
-        }
-
-        50% {
-          transform: translate(250px, 100px);
-        }
-
-        75% {
-          transform: translate(0, 100px);
-        }
-
-        100% {
-          transform: translate(0, 0);
-        }
+    }
+    @keyframes around {
+      0% {
+        top: 0;
+        left: 0;
       }
-
-      @keyframes translate3d-demo-anim {
-        0% {
-          transform: translate3d(0, 0, 0);
-        }
-
-        25% {
-          transform: translate3d(250px, 0, 0);
-        }
-
-        50% {
-          transform: translate3d(250px, 100px, 0);
-        }
-
-        75% {
-          transform: translate3d(0, 100px, 0);
-        }
-
-        100% {
-          transform: translate3d(0, 0, 0);
-        }
+      25% {
+        top: 0;
+        left: 600px;
       }
-
-
-      @keyframes top-left-demo-anim {
-        0% {
-          top: 0;
-          left: 0;
-        }
-
-        25% {
-          top: 0;
-          left: 250px;
-        }
-
-        50% {
-          top: 100px;
-          left: 250px;
-        }
-
-        75% {
-          top: 100px;
-          left: 0;
-        }
-
-        100% {
-          top: 0;
-          left: 0;
-        }
+      50% {
+        top: 400px;
+        left: 600px;
       }
-
-      @-webkit-keyframes translate-demo-anim {
-        0% {
-          -webkit-transform: translate(0, 0);
-        }
-
-        25% {
-          -webkit-transform: translate(250px, 0);
-        }
-
-        50% {
-          -webkit-transform: translate(250px, 100px);
-        }
-
-        75% {
-          -webkit-transform: translate(0, 100px);
-        }
-
-        100% {
-          -webkit-transform: translate(0, 0);
-        }
+      75% {
+        top: 400px;
+        left: 0;
       }
+    }
 
-      @-webkit-keyframes translate3d-demo-anim {
-        0% {
-          -webkit-transform: translate3d(0, 0, 0);
-        }
-
-        25% {
-          -webkit-transform: translate3d(250px, 0, 0);
-        }
-
-        50% {
-          -webkit-transform: translate3d(250px, 100px, 0);
-        }
-
-        75% {
-          -webkit-transform: translate3d(0, 100px, 0);
-        }
-
-        100% {
-          -webkit-transform: translate3d(0, 0, 0);
-        }
+    @-webkit-keyframes around-transform {
+      0% {
+        -webkit-transform: translate(0, 0);
       }
-
-      @-webkit-keyframes top-left-demo-anim {
-        0% {
-          top: 0;
-          left: 0;
-        }
-
-        25% {
-          top: 0;
-          left: 250px;
-        }
-
-        50% {
-          top: 100px;
-          left: 250px;
-        }
-
-        75% {
-          top: 100px;
-          left: 0;
-        }
-
-        100% {
-          top: 0;
-          left: 0;
-        }
+      25% {
+        -webkit-transform: translate(600px, 0);
       }
-
-      button.btn {
-        width: 100%;
-        font-size: 1.1em;
-        margin: 0 auto;
+      50% {
+        -webkit-transform: translate(600px, 400px);
       }
-
-      button.btn.selected {
-        background: #aaa;
+      75% {
+        -webkit-transform: translate(0, 400px);
       }
+    }
 
-      .row {
-        margin-top: 20px;
+    @keyframes around-transform {
+      0% {
+        transform: translate(0, 0);
       }
-
-      .btn-row {
-        display: flex;
+      25% {
+        transform: translate(600px, 0);
       }
+      50% {
+        transform: translate(600px, 400px);
+      }
+      75% {
+        transform: translate(0, 400px);
+      }
+    }
 
-    </style>
-  </head>
-  <body>
+    @-webkit-keyframes around-transform-3d {
+      0% {
+        -webkit-transform: translate3d(0, 0, 0);
+      }
+      25% {
+        -webkit-transform: translate3d(600px, 0, 0);
+      }
+      50% {
+        -webkit-transform: translate3d(600px, 400px, 0);
+      }
+      75% {
+        -webkit-transform: translate3d(0, 400px, 0);
+      }
+    }
 
-  <h1>
-    FPS demo
-  </h1>
-  <p>
-    In Chrome, go to Developer Tools &#8594; Esc &#8594; Rendering &#8594; Show FPS Meter
-  </p>
+    @keyframes around-transform-3d {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+      25% {
+        transform: translate3d(600px, 0, 0);
+      }
+      50% {
+        transform: translate3d(600px, 400px, 0);
+      }
+      75% {
+        transform: translate3d(0, 400px, 0);
+      }
+    }
+
+    html {
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      bottom: 100px;
+      right: 100px;
+    }
+    .box {
+      width: 80px;
+      height: 80px;
+      border-radius: 50px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin-top: -40px;
+      margin-left: -40px;
+      background: -webkit-linear-gradient(top, #0f0, #030);
+      background: linear-gradient(to bottom, #0f0, #030);
+    }
+    .box.anim.with-top-left {
+      -webkit-animation: around 20s infinite linear;
+      animation: around 20s infinite linear;
+    }
+    .box.anim.with-z {
+      -webkit-animation: around 20s infinite linear;
+      animation: around 20s infinite linear;
+      transform: translateZ(0);
+      -webkit-trasform: translateZ(0);
+    }
+    .box.anim.with-translate {
+      -webkit-animation: around-transform 20s infinite linear;
+      animation: around-transform 20s infinite linear;
+    }
+    .box.anim.with-translate3d {
+      -webkit-animation: around-transform-3d 20s infinite linear;
+      animation: around-transform-3d 20s infinite linear;
+    }
+    .alt-color .box {
+      background: -webkit-linear-gradient(top, #ff0, #330);
+      background: linear-gradient(to bottom, #ff0, #330);
+      margin-bottom: 1px;
+    }
+    .stage {
+      width: 1000px;
+      height: 800px;
+      background: #ccc;
+    }
+    .buttons {
+      position: absolute;
+      top: 364px;
+      left: 360px;
+    }
+    .think {
+      text-align: center;
+      font: 36px sans-serif;
+      background: -webkit-linear-gradient(top, #2D9AFF, #001F33);
+      background: linear-gradient(to bottom, #2D9AFF, #001F33);
+      padding: 15px 25px 18px;
+      border-radius: 15px;
+      color: #fff;
+      text-shadow: 0 1px 3px #000;
+      -webkit-transform: translateZ(0);
+      cursor: pointer;
+    }
+    .btn {
+      font: 14px sans-serif;
+      background: -webkit-linear-gradient(top, #2D9AFF, #001F33);
+      background: linear-gradient(to bottom, #2D9AFF, #001F33);
+      padding: 15px 25px 18px;
+      border-radius: 15px;
+      color: #fff;
+      text-shadow: 0 1px 3px #000;
+      -webkit-transform: translateZ(0);
+      cursor: pointer;
+    }
+    .btn.on {
+      background: -webkit-linear-gradient(top, #FF2D2D, #291010);
+      background: linear-gradient(to bottom, #FF2D2D, #291010);
+    }
+    .think.on {
+      background: -webkit-linear-gradient(top, #FF2D2D, #291010);
+      background: linear-gradient(to bottom, #FF2D2D, #291010);
+    }
+    .btn-row {
+      display: flex;
+    }
+    .hint {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 10px;
+      font: 16px sans-serif;
+    }
+  </style>
+</head>
+<body>
+<div class="hint">
+  In Chrome, go to Developer Tools &#8594; Esc &#8594; Rendering &#8594; Show FPS Meter
+</div>
+<div class="stage">
   <div class="container">
-    <div class="row btn-row">
-      <button class="btn selected" type="button" onclick="setAnim('top-left', 0)">top / left</button>
-      <button class="btn" type="button" onclick="setAnim('top-left-with-z', 1)">top / left / translateZ(0)</button>
-      <button class="btn" type="button" onclick="setAnim('translate', 2)">translate</button>
-      <button class="btn" type="button" onclick="setAnim('translate3d', 3)">translate3d</button>
-    </div>
-    <div class="row">
-      <div class="demo top-left-demo">
+    <div class="container">
+      <div class="container">
       </div>
     </div>
-    <div class="row">
-      <button class="btn" type=button onclick=runJsForOneSecond()>Run JS for 1 second</button>
+  </div>
+  <div class="buttons">
+    <div class="think">Run JS for 1 min</div>
+    <div class="btn-row">
+      <button type="button" class="btn" onclick="changeStyle(0);">top/left</button>
+      <button type="button" class="btn" onclick="changeStyle(1);">top.left/translateZ(0)</button>
+      <button type="button" class="btn" onclick="changeStyle(2);">translate</button>
+      <button type="button" class="btn" onclick="changeStyle(3);">translate3d</button>
     </div>
   </div>
+</div>
+<script>
 
-  <script src="js/jquery-1.9.1.js"></script>
-  <script>
-    // fill the "snake" demo with lots of "ball" divs
-    (function ($) {
-      var numBalls = 90;
+  function changeStyle(idx) {
+    var divs = document.querySelectorAll('.box.anim');
+    toArray(divs).forEach(function (div) {
+      var animClasses = ['with-top-left', 'with-z', 'with-translate', 'with-translate3d'];
 
-      for (var i = 0; i < numBalls; i++) {
-        var ball = $('<div class="ball"></div>');
-        var delay = (i / 64) + 's';
-        ball.css({
-          '-webkit-animation-delay': delay,
-          'animation-delay': delay
-        });
-        $('.demo').append(ball);
-      }
-    })(jQuery);
-  </script>
-
-  <script>
-    function runJsForOneSecond() {
-      var start = Date.now();
-      var sum = 0;
-      while (true) {
-        sum += Date.now();
-        if (Date.now() > start + 1000) {
-          break;
-        }
-      }
-    }
-
-    function setAnim(className, btnIdx) {
-      $('.btn-row').children().each(function (i, el) {
-        $(el).toggleClass('selected', i === btnIdx);
+      animClasses.forEach(function (oldClass) {
+        div.classList.remove(oldClass);
       });
+      div.classList.add(animClasses[idx]);
+    });
+  }
 
-      $('.demo').removeClass().addClass('demo').addClass(className + '-demo');
+  function toArray(arr) {
+    return Array.prototype.slice.call(arr);
+  }
 
+  var partsPerSnake = 30;
+
+  toArray(document.querySelectorAll('.container')).forEach(function(container) {
+    var div = document.createElement('div');
+    div.innerHTML = Array(partsPerSnake+1).join('<div class="box"></div>');
+    toArray(div.children).forEach(function(box, i) {
+      box.classList.add('anim');
+      box.classList.add('with-top-left');
+      box.style.animationDelay = box.style.WebkitAnimationDelay = "-" + (i/8) + "s";
+    });
+    container.appendChild(div);
+  });
+
+  function layerise() {
+    toArray(document.querySelectorAll('.box')).forEach(function(box, i) {
+      box.style.transform = box.style.WebkitTransform = 'translateZ(0)';
+    });
+  }
+
+  function stop() {
+    toArray(document.querySelectorAll('.box')).forEach(function(box, i) {
+      box.style.WebkitAnimationPlayState = 'paused';
+    });
+  }
+
+  function transformAnim() {
+    toArray(document.querySelectorAll('.box')).forEach(function(box, i) {
+      i = i%partsPerSnake;
+      box.style.animation = box.style.WebkitAnimation = "around-transform 20s infinite linear";
+      box.style.animationDelay = box.style.WebkitAnimationDelay = "-" + (i/8) + "s";
+    });
+  }
+
+  var raf = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
+
+  function toggleColors() {
+    var lastChange = Date.now();
+    var stage = document.querySelector('.stage');
+
+    function frame() {
+      var now = Date.now();
+
+      if (now - lastChange > 1000) {
+        lastChange = now;
+        stage.classList.toggle('alt-color');
+      }
+
+      raf(frame);
     }
-  </script>
-  </body>
+
+    raf(frame);
+  }
+
+  document.querySelector('.think').addEventListener('click', function() {
+    var btn = this;
+    btn.classList.add('on');
+    raf(function() {
+      var start = Date.now();
+      while(Date.now() - start < 1000);
+      btn.classList.remove('on');
+    });
+  });
+
+  //layerise();
+  //transformAnim();
+  //toggleColors();
+  //stop();
+</script>
+</body>
 </html>
