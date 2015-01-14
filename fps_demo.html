@@ -1,0 +1,285 @@
+<html>
+  <head>
+    <title>FPS demo</title>
+    <style>
+
+      *:focus {
+        outline: 0;
+      }
+
+      .demo {
+        border: 2px solid #999;
+        width: 300px;
+        height: 150px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .ball {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: #333;
+        border-radius: 100%;
+      }
+
+      .container {
+        margin: 0 auto;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .translate3d-demo .ball {
+        left: 0;
+        top: 0;
+        animation: translate3d-demo-anim 3s infinite ease-in-out;
+        -webkit-animation: translate3d-demo-anim 3s infinite ease-in-out;
+      }
+
+      .translate-demo .ball {
+        left: 0;
+        top: 0;
+        animation: translate-demo-anim 3s infinite ease-in-out;
+        -webkit-animation: translate-demo-anim 3s infinite ease-in-out;
+      }
+
+      .top-left-demo .ball {
+        animation: top-left-demo-anim 3s infinite ease-in-out;
+        -webkit-animation: top-left-demo-anim 3s infinite ease-in-out;
+      }
+
+      .top-left-with-z-demo .ball {
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        animation: top-left-demo-anim 3s infinite ease-in-out;
+        -webkit-animation: top-left-demo-anim 3s infinite ease-in-out;
+      }
+
+      @keyframes translate-demo-anim {
+        0% {
+          transform: translate(0, 0);
+        }
+
+        25% {
+          transform: translate(250px, 0);
+        }
+
+        50% {
+          transform: translate(250px, 100px);
+        }
+
+        75% {
+          transform: translate(0, 100px);
+        }
+
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+
+      @keyframes translate3d-demo-anim {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+
+        25% {
+          transform: translate3d(250px, 0, 0);
+        }
+
+        50% {
+          transform: translate3d(250px, 100px, 0);
+        }
+
+        75% {
+          transform: translate3d(0, 100px, 0);
+        }
+
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+
+      @keyframes top-left-demo-anim {
+        0% {
+          top: 0;
+          left: 0;
+        }
+
+        25% {
+          top: 0;
+          left: 250px;
+        }
+
+        50% {
+          top: 100px;
+          left: 250px;
+        }
+
+        75% {
+          top: 100px;
+          left: 0;
+        }
+
+        100% {
+          top: 0;
+          left: 0;
+        }
+      }
+
+      @-webkit-keyframes translate-demo-anim {
+        0% {
+          -webkit-transform: translate(0, 0);
+        }
+
+        25% {
+          -webkit-transform: translate(250px, 0);
+        }
+
+        50% {
+          -webkit-transform: translate(250px, 100px);
+        }
+
+        75% {
+          -webkit-transform: translate(0, 100px);
+        }
+
+        100% {
+          -webkit-transform: translate(0, 0);
+        }
+      }
+
+      @-webkit-keyframes translate3d-demo-anim {
+        0% {
+          -webkit-transform: translate3d(0, 0, 0);
+        }
+
+        25% {
+          -webkit-transform: translate3d(250px, 0, 0);
+        }
+
+        50% {
+          -webkit-transform: translate3d(250px, 100px, 0);
+        }
+
+        75% {
+          -webkit-transform: translate3d(0, 100px, 0);
+        }
+
+        100% {
+          -webkit-transform: translate3d(0, 0, 0);
+        }
+      }
+
+      @-webkit-keyframes top-left-demo-anim {
+        0% {
+          top: 0;
+          left: 0;
+        }
+
+        25% {
+          top: 0;
+          left: 250px;
+        }
+
+        50% {
+          top: 100px;
+          left: 250px;
+        }
+
+        75% {
+          top: 100px;
+          left: 0;
+        }
+
+        100% {
+          top: 0;
+          left: 0;
+        }
+      }
+
+      button.btn {
+        width: 100%;
+        font-size: 1.1em;
+        margin: 0 auto;
+      }
+
+      button.btn.selected {
+        background: #aaa;
+      }
+
+      .row {
+        margin-top: 20px;
+      }
+
+      .btn-row {
+        display: flex;
+      }
+
+    </style>
+  </head>
+  <body>
+
+  <h1>
+    FPS demo
+  </h1>
+  <p>
+    In Chrome, go to Developer Tools &#8594; Esc &#8594; Rendering &#8594; Show FPS Meter
+  </p>
+  <div class="container">
+    <div class="row btn-row">
+      <button class="btn selected" type="button" onclick="setAnim('top-left', 0)">top / left</button>
+      <button class="btn" type="button" onclick="setAnim('top-left-with-z', 1)">top / left / translateZ(0)</button>
+      <button class="btn" type="button" onclick="setAnim('translate', 2)">translate</button>
+      <button class="btn" type="button" onclick="setAnim('translate3d', 3)">translate3d</button>
+    </div>
+    <div class="row">
+      <div class="demo top-left-demo">
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn" type=button onclick=runJsForOneSecond()>Run JS for 1 second</button>
+    </div>
+  </div>
+
+  <script src="js/jquery-1.9.1.js"></script>
+  <script>
+    // fill the "snake" demo with lots of "ball" divs
+    (function ($) {
+      var numBalls = 90;
+
+      for (var i = 0; i < numBalls; i++) {
+        var ball = $('<div class="ball"></div>');
+        var delay = (i / 64) + 's';
+        ball.css({
+          '-webkit-animation-delay': delay,
+          'animation-delay': delay
+        });
+        $('.demo').append(ball);
+      }
+    })(jQuery);
+  </script>
+
+  <script>
+    function runJsForOneSecond() {
+      var start = Date.now();
+      var sum = 0;
+      while (true) {
+        sum += Date.now();
+        if (Date.now() > start + 1000) {
+          break;
+        }
+      }
+    }
+
+    function setAnim(className, btnIdx) {
+      $('.btn-row').children().each(function (i, el) {
+        $(el).toggleClass('selected', i === btnIdx);
+      });
+
+      $('.demo').removeClass().addClass('demo').addClass(className + '-demo');
+
+    }
+  </script>
+  </body>
+</html>
