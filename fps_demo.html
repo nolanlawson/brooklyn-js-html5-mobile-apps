@@ -13,7 +13,7 @@ http://jsbin.com/ibucuk/4/quiet
 -->
 <meta name="robots" content="noindex">
 <head>
-  <title>Snakes on a geo plane</title>
+  <title>FPS demo</title>
 
   <style id="jsbin-css">
 
@@ -28,11 +28,11 @@ http://jsbin.com/ibucuk/4/quiet
       }
       25% {
         top: 0;
-        left: 600px;
+        left: 700px;
       }
       50% {
         top: 400px;
-        left: 600px;
+        left: 700px;
       }
       75% {
         top: 400px;
@@ -46,11 +46,11 @@ http://jsbin.com/ibucuk/4/quiet
       }
       25% {
         top: 0;
-        left: 600px;
+        left: 700px;
       }
       50% {
         top: 400px;
-        left: 600px;
+        left: 700px;
       }
       75% {
         top: 400px;
@@ -63,10 +63,10 @@ http://jsbin.com/ibucuk/4/quiet
         -webkit-transform: translate(0, 0);
       }
       25% {
-        -webkit-transform: translate(600px, 0);
+        -webkit-transform: translate(700px, 0);
       }
       50% {
-        -webkit-transform: translate(600px, 400px);
+        -webkit-transform: translate(700px, 400px);
       }
       75% {
         -webkit-transform: translate(0, 400px);
@@ -78,10 +78,10 @@ http://jsbin.com/ibucuk/4/quiet
         transform: translate(0, 0);
       }
       25% {
-        transform: translate(600px, 0);
+        transform: translate(700px, 0);
       }
       50% {
-        transform: translate(600px, 400px);
+        transform: translate(700px, 400px);
       }
       75% {
         transform: translate(0, 400px);
@@ -93,10 +93,10 @@ http://jsbin.com/ibucuk/4/quiet
         -webkit-transform: translate3d(0, 0, 0);
       }
       25% {
-        -webkit-transform: translate3d(600px, 0, 0);
+        -webkit-transform: translate3d(700px, 0, 0);
       }
       50% {
-        -webkit-transform: translate3d(600px, 400px, 0);
+        -webkit-transform: translate3d(700px, 400px, 0);
       }
       75% {
         -webkit-transform: translate3d(0, 400px, 0);
@@ -108,10 +108,10 @@ http://jsbin.com/ibucuk/4/quiet
         transform: translate3d(0, 0, 0);
       }
       25% {
-        transform: translate3d(600px, 0, 0);
+        transform: translate3d(700px, 0, 0);
       }
       50% {
-        transform: translate3d(600px, 400px, 0);
+        transform: translate3d(700px, 400px, 0);
       }
       75% {
         transform: translate3d(0, 400px, 0);
@@ -126,14 +126,14 @@ http://jsbin.com/ibucuk/4/quiet
     body {
       margin: 0;
       padding: 0;
+      height: 100%;
+      width: 100%;
     }
 
     .container {
       position: absolute;
       top: 100px;
       left: 100px;
-      bottom: 100px;
-      right: 100px;
     }
     .box {
       width: 80px;
@@ -172,21 +172,22 @@ http://jsbin.com/ibucuk/4/quiet
       margin-bottom: 1px;
     }
     .stage {
-      width: 1000px;
+      width: 1100px;
       height: 800px;
       background: #ccc;
     }
     .buttons {
       position: absolute;
-      top: 364px;
-      left: 360px;
+      top: 350px;
+      left: 350px;
+      width: 400px;
     }
     .think {
       text-align: center;
-      font: 36px sans-serif;
+      font: 24px sans-serif;
       background: -webkit-linear-gradient(top, #2D9AFF, #001F33);
       background: linear-gradient(to bottom, #2D9AFF, #001F33);
-      padding: 15px 25px 18px;
+      padding: 10px 0;
       border-radius: 15px;
       color: #fff;
       text-shadow: 0 1px 3px #000;
@@ -194,23 +195,20 @@ http://jsbin.com/ibucuk/4/quiet
       cursor: pointer;
     }
     .btn {
-      font: 14px sans-serif;
+      font: 12px sans-serif;
       background: -webkit-linear-gradient(top, #2D9AFF, #001F33);
       background: linear-gradient(to bottom, #2D9AFF, #001F33);
-      padding: 15px 25px 18px;
+      padding: 20px 10px;
       border-radius: 15px;
       color: #fff;
       text-shadow: 0 1px 3px #000;
       -webkit-transform: translateZ(0);
       cursor: pointer;
+      flex-grow: 1;
     }
-    .btn.on {
-      background: -webkit-linear-gradient(top, #FF2D2D, #291010);
-      background: linear-gradient(to bottom, #FF2D2D, #291010);
-    }
-    .think.on {
-      background: -webkit-linear-gradient(top, #FF2D2D, #291010);
-      background: linear-gradient(to bottom, #FF2D2D, #291010);
+    .btn.selected, .think.on {
+      background: -webkit-linear-gradient(top, #ADADAD, #3D3D3D);
+      background: linear-gradient(to bottom, #ADADAD, #3D3D3D);
     }
     .btn-row {
       display: flex;
@@ -226,7 +224,7 @@ http://jsbin.com/ibucuk/4/quiet
 </head>
 <body>
 <div class="hint">
-  In Chrome, go to Developer Tools &#8594; Esc &#8594; Rendering &#8594; Show FPS Meter
+  In Chrome, go to Developer Tools &#8594; Press Esc key &#8594; Rendering &#8594; Show FPS Meter
 </div>
 <div class="stage">
   <div class="container">
@@ -236,10 +234,10 @@ http://jsbin.com/ibucuk/4/quiet
     </div>
   </div>
   <div class="buttons">
-    <div class="think">Run JS for 1 min</div>
+    <div class="think">Run JS for 1 second</div>
     <div class="btn-row">
-      <button type="button" class="btn" onclick="changeStyle(0);">top/left</button>
-      <button type="button" class="btn" onclick="changeStyle(1);">top/left/translateZ(0)</button>
+      <button type="button" class="btn selected" onclick="changeStyle(0);">top / left</button>
+      <button type="button" class="btn" onclick="changeStyle(1);">top / left / translateZ(0)</button>
       <button type="button" class="btn" onclick="changeStyle(2);">translate</button>
       <button type="button" class="btn" onclick="changeStyle(3);">translate3d</button>
     </div>
@@ -250,13 +248,23 @@ http://jsbin.com/ibucuk/4/quiet
   function changeStyle(idx) {
     var divs = document.querySelectorAll('.box.anim');
     toArray(divs).forEach(function (div) {
-      var animClasses = ['with-top-left', 'with-z', 'with-translate', 'with-translate3d'];
+      var classesToRemove =
+          ['with-top-left', 'with-z', 'with-translate', 'with-translate3d'];
 
-      animClasses.forEach(function (oldClass) {
+      classesToRemove.forEach(function (oldClass) {
         div.classList.remove(oldClass);
       });
-      div.classList.add(animClasses[idx]);
+      div.classList.add(classesToRemove[idx]);
     });
+
+    toArray(document.querySelectorAll('.btn')).forEach(function (btn, btnIdx) {
+      if (btnIdx === idx) {
+        btn.classList.add('selected');
+      } else {
+        btn.classList.remove('selected');
+      }
+    })
+
   }
 
   function toArray(arr) {
@@ -319,17 +327,25 @@ http://jsbin.com/ibucuk/4/quiet
   document.querySelector('.think').addEventListener('click', function() {
     var btn = this;
     btn.classList.add('on');
-    raf(function() {
-      var start = Date.now();
-      while(Date.now() - start < 1000);
-      btn.classList.remove('on');
-    });
+    setTimeout(function () {
+      raf(function () {
+        var start = Date.now();
+        while (Date.now() - start < 1000);
+        btn.classList.remove('on');
+      });
+    }, 50);
   });
 
   //layerise();
   //transformAnim();
   //toggleColors();
   //stop();
+</script>
+<script>
+  var zoom = innerWidth / 1100;
+  if (zoom < 1) {
+    document.querySelector('html').style.zoom = (zoom);
+  }
 </script>
 </body>
 </html>

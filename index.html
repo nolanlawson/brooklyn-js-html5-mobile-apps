@@ -304,14 +304,9 @@
             to be careful to only manipulate one of these 4 properties. If you
             try to manipulate anything else, then you won't get hardware acceleration.
 
-            The key with the top three is the "3D" part. There are 2d equivalents for each
-            of these, or you can use normal tricks like "top" and "left" with absolute
-            position, but if you do, then you won't get hardware acceleration. I know you're
-            not using the z axis at all, but the "3D" is what tells the browser to use
-            the GPU.
-
-            The only exception is opacity, which gets hardware acceleration without 3D
-            in the name. Go figure.
+            There are some exceptions - e.g. the regular translate will also give
+            hardware acceleration in some browsers, so you don't necessarily need
+            translate3d. But these are the four to stick with if you want to play it safe.
           </aside>
 				</section>
 				<section>
@@ -361,15 +356,12 @@
 						  </td>
 						</tr>
 					</table>
-          <div class="footer">
-            <span class="text-muted">See a full <a href="fps_demo.html">FPS demo</a>.</span>
-          </div>
           <aside class="notes">
             Now if you don't believe me, and you go running off
-            using CSS animations without using the "3D" variants,
+            using CSS animations without using transforms/opacity,
             you'll get something faster than JavaScript animations,
             but still not as fast as hardware-accelerated animations.
-            And thus not as fast as native. Also, the non-GPU animations
+            (And thus not as fast as native.) Also, the non-GPU animations
             are blocked by JavaScript and the DOM!
           </aside>
 				</section>
@@ -379,15 +371,17 @@
             <video data-autoplay src="vid/snakes.webm" loop></video>
           </div>
           <div class="header">
-            Jake Archibald and Paul Kinlan - Mobile Web Thursdays: Performance on Mobile
+            <a href="fps_demo.html" target="_blank">Full FPS demo</a> ("borrowed" from Jake Archibald)
           </div>
           <aside class="notes">
-            In the links at the end of these slides (which I'll send around),
+            In the links at the end of these slides,
             I have a Jake Archibald video where he goes over all these different
             techniques and shows exactly what the performance looks like on a Nexus 7.
             It's a great example of how you can fool yourself by only testing on
             your desktop machine, because notice how those snakes look fine on
             desktop but horrible on the tablet.
+
+            I also tinkered with his demo and attached it to these slides.
           </aside>
         </section>
 
